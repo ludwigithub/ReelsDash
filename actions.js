@@ -1,5 +1,1 @@
-$(document).ready(function(){
-    $("#createBtn").click(function(){
-        alert("Alert");
-    });
-});
+document.getElementById("greeting").innerHTML = "Bonjour";
