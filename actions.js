@@ -1,11 +1,9 @@
-$(document).ready (function(){
-const box = document.createElement("h2");
+$(document).ready(function () {
+    var tit = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"];
 
-// ✅ Works
-for(let i= 0; i < 5; i++){
-    box.innerHTML = i;
-    $("#tit").append(box);
-}
-
-}
-);
+    for (var i in tit) {
+        var element = document.createElement("h2");
+        element.innerHTML = tit[i];
+        $("#tit").append(element);
+    }
+});
