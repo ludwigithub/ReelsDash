@@ -1,5 +1,5 @@
 window.onload = function(){
-const box = document.createElement("p");
+const box = document.createElement("h2");
 
 // ✅ Works
 for(let i= 0; i < 5; i++){
