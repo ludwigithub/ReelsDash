@@ -2,6 +2,9 @@ window.onload = function(){
 const box = document.getElementById('greeting');
 
 // ✅ Works
-box.innerHTML = "yo min </div></a></td> ";
+for(let i= 0; i < 5; i++){
+    box.innerHTML = "yo min </div></a></td> ";
+}
+
 }
 
