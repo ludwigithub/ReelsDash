@@ -28,6 +28,31 @@ function generateTable(table, data) {//accepts the table and all the data declar
         case element["Line"]:
             cell.className = "colName";
             break;
+        case element["Shift"]:
+            cell.className = "colShift";
+            break;
+        case element["Units Produced"]:
+            cell.className = "colUnits";
+            break;
+        case element["Uptime"]:
+            cell.className = "Uptime";
+            break;
+        case element["Avg Speed"]:
+            cell.className = "colSpd";
+            break;
+        case element["Speed(10min)"]:
+            cell.className = "colName"; 
+            break;
+        case element["Data Integrity"]:
+            cell.className = "colName";
+            break;
+        case element["Order Info"]:
+            cell.className = "colOrder";
+            break;
+        case element["Need"]:
+            cell.className = "colRemaining";
+            break;
+
       }
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
