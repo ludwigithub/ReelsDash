@@ -41,3 +41,7 @@ let table = document.querySelector("table");
 let data = Object.keys(mountains[0]);
 generateTableHead(table, data);
 generateTable(table, mountains);
+
+var canvas = document.getElementById("Line");
+var context = canvas.getConext("2d");
+alert(context);
