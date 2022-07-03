@@ -24,7 +24,9 @@ function generateTable(table, data) {
     let row = table.insertRow();
     for (key in element) {
       let cell = row.insertCell();
-
+      if(element[key] ==  element["Line"]){
+        cell.className = "dbTitle";
+      }
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
     }
