@@ -27,7 +27,6 @@ function generateTable(table, data) {
       cell.className = 'dbCol colName ';
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
-      cell.createElement("a");
     }
   }
 }
@@ -37,8 +36,6 @@ let data = Object.keys(mountains[0]);
 generateTableHead(table, data);
 generateTable(table, mountains);
 
-window.onload = function(){
-
-alert(context + " it works");
-}
+var tr = document.getElementById('table').tHead.children[0];
+tr.insertCell(1).outerHTML = "<th>Second</th>"
 });
