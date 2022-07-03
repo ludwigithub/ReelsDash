@@ -23,8 +23,8 @@ function generateTable(table, data) {
   for (let element of data) {
     let row = table.insertRow();
     for (key in element) {
+        console.log(element[0]);
       let cell = row.insertCell();
-      cell.className = 'dbCol colName ';
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
     }
