@@ -1,4 +1,6 @@
 
+$(document).ready(function () {
+    
 
 var canvas = document.getElementById("Line");
 let mountains = [
@@ -37,3 +39,4 @@ window.onload = function(){
 
 alert(context + " it works");
 }
+});
