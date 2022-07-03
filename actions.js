@@ -11,9 +11,9 @@ $(document).ready(function () {
     }
 });
 var canvas = document.getElementById("Line");
-var context = canvas.getConext("2d");
+
 let mountains = [
-  {  '${context}': "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi" }
+  {  '${c}': "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi" }
 ];
 
 function generateTableHead(table, data) {
