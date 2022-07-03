@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 var canvas = document.getElementById("Line");
 let mountains = [
-  {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 5, "Avg Speed": 5, "Speed(10min)": 5, "Data Integrity": 5, "Order Info": 5, Need: 5 }
+  {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 }
 ];
 
 function generateTableHead(table, data) {
