@@ -35,7 +35,7 @@ function generateTable(table, data) {//accepts the table and all the data declar
             cell.className = "colUnits";
             break;
         case element["Uptime"]:
-            cell.className = "Uptime";
+            cell.className = "colUptime";
             break;
         case element["Avg Speed"]:
             cell.className = "colSpd";
