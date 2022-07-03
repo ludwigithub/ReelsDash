@@ -11,7 +11,7 @@ $(document).ready(function () {
     }
 });
 var canvas = document.getElementById("Line");
-alert(canvas);
+alert(canvas.innerHTML);
 let mountains = [
   {  '${c}': "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi" }
 ];
