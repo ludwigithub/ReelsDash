@@ -8,6 +8,8 @@ $(document).ready(function () {
         $("#greeting").append(element);
     }
 });
+window.onload = function(){
+
 
 let tableHeaders = ["Global Ranking", "Username", "Score", "Time Alive [seconds]", "Accuracy [%]"]
 
@@ -23,3 +25,4 @@ let scoreHeader = document.createElement('th') // Creates the current header cel
 scoreHeader.innerText = header
 scoreboardTableHeaderRow.append(scoreHeader) // Appends the current header cell to the header row
 })
+}
