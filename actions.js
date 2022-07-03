@@ -12,7 +12,7 @@ $(document).ready(function () {
 });
 
 let mountains = [
-  { Line: "Monte Falco", Shift: 1658, Units_Produced: "Parco Foreste Casentinesi" }
+  { Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi" }
 ];
 
 function generateTableHead(table, data) {
