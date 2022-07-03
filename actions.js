@@ -11,9 +11,11 @@ $(document).ready(function () {
     }
 });
 let mountains = [
-    {
-        name: "Monte", height: 70, place: "parco"
-    }
+    {name: "Monte", height: 70, place: "parco"},
+    { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
+  { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
+  { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
+  { name: "Monte Amiata", height: 1738, place: "Siena" }
 ];
 function generateTableHead(table, data){
     let thead = table.createTHead();
