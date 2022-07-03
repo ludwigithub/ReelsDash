@@ -4,23 +4,39 @@ $(document).ready(function () {
 
     for (var i in tit) {
         var element = document.createElement("th");
+        var element1 = document.createElement("th");
         element.innerHTML = tit[i];
+        $("#greeting").append(element);
         $("#greeting").append(element);
     }
 });
-window.onload = function(){
-
-
-let tableHeaders = ["Global Ranking", "Username", "Score", "Time Alive [seconds]", "Accuracy [%]"]
-
-let scoreboardTable = document.createElement('table') // Create the table itself
-scoreboardTable.className = 'scoreboardTable'
-let scoreboardTableHead = document.createElement('thead') // Creates the table header group element
-scoreboardTableHead.className = 'scoreboardTableHead'
-let scoreboardTableHeaderRow = document.createElement('tr') // Creates the row that will contain the headers
-scoreboardTableHeaderRow.className = 'scoreboardTableHeaderRow'
-
-let scoreHeader = document.createElement('th') // Creates the current header cell during a specific iteration
-scoreHeader.innerText = 15
-scoreboardTableHeaderRow.append(scoreHeader) // Appends the current header cell to the header row
+let mountains = [
+    {
+        name: "Monte", height: 70, place: "parco"
+    }
+];
+function generateTableHead(table, data){
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for(let key of data){
+        let th = document.createElement("th");
+        let text = document.createTextNode(key);
+        th.appendChild(text);
+        row.appendChild(th);
+    }
 }
+function generateTable(table, data){
+    for(let element of data){
+        let row = table.insertRow();
+        for(key in element){
+            let cell = row.insertRow();
+            let text = document.createTextNode(element[key]);
+            cell.appendChild(text);
+        }
+    }
+}
+
+let table = document.querySelector("table");
+let data = Object.keys(mountains[0]);
+generateTableHead(table, data);
+generateTable(table, mountains);
