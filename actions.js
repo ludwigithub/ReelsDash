@@ -27,7 +27,7 @@ function generateTable(table, data) {
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
     }
-    element["Line"].outerHTML = "<th>Second</th>";
+    element["Line"].innerHTML = "<th>Second</th>";
   }
 }
 
