@@ -19,13 +19,15 @@ function generateTableHead(table, data) {
   }
 }
 
-function generateTable(table, data) {
-  for (let element of data) {
-    let row = table.insertRow();
-    for (key in element) {
-      let cell = row.insertCell();
-      if(element[key] ==  element["Line"]){
-        cell.className = "colName";
+function generateTable(table, data) {//accepts the table and all the data declared in mountains
+  for (let element of data) { //for all elements in the data,
+    let row = table.insertRow(); //insert a row
+    for (key in element) { //for all data in the row
+      let cell = row.insertCell(); //insert a cell
+      switch(element[key]){
+        case element["Line"]:
+            cell.className = "colName";
+            break;
       }
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
