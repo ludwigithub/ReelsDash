@@ -26,8 +26,8 @@ function generateTable(table, data) {
       let cell = row.insertCell();
       cell.className = 'dbCol colName ';
       let text = document.createTextNode(element[key]);
-      cell.createElement("a");
       cell.appendChild(text);
+      cell.createElement("a");
     }
   }
 }
