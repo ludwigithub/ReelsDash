@@ -23,7 +23,7 @@ function generateTable(table, data) {
   for (let element of data) {
     let row = table.insertRow();
     for (key in element) {
-        alert(element[0]);
+        alert(element[key]);
       let cell = row.insertCell();
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
