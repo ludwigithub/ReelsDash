@@ -27,7 +27,7 @@ function generateTable(table, data) {
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
     }
-    console.log(element["Line"]);
+    element["Line"].outerHTML = "<th>Second</th>";
   }
 }
 
@@ -35,4 +35,7 @@ let table = document.querySelector("table");
 let data = Object.keys(mountains[0]);
 generateTableHead(table, data);
 generateTable(table, mountains);
+
+var tr = document.querySelector('table').tBody.children[0];
+tr.insertCell(0).outerHTML = "<th>Second</th>"
 });
