@@ -27,8 +27,6 @@ function generateTable(table, data) {
       cell.className = 'dbCol colName ';
       let text = document.createTextNode(element[key]);
       var aTag = document.createElement("a");
-      aTag.href = anchorLink;
-      aTag.innerHTML = anchorText;
       cell.appendChild(text);
     }
   }
