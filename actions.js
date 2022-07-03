@@ -24,11 +24,12 @@ function generateTable(table, data) {
     let row = table.insertRow();
     for (key in element) {
       let cell = row.insertCell();
-      element["Line"].innerText = "<th>Second</th>";
+
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
     }
-    
+    var line = document.createTextNode( element["Line"]);
+    line.id = "The Line";
   }
 }
 
