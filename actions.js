@@ -44,4 +44,4 @@ generateTable(table, mountains);
 
 var canvas = document.getElementById("Line");
 var context = canvas.getConext("2d");
-alert(context);
+alert(context + " it works");
