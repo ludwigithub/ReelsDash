@@ -4,15 +4,13 @@ $(document).ready(function () {
 
     for (var i in tit) {
         var element = document.createElement("th");
-        var element1 = document.createElement("th");
         element.innerHTML = tit[i];
-        $("#greeting").append(element);
         $("#greeting").append(element);
     }
 });
 var canvas = document.getElementById("Line");
 let mountains = [
-  {  '${canvas.innerHTML}': "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi" }
+  {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi" }
 ];
 
 function generateTableHead(table, data) {
