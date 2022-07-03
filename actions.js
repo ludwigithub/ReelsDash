@@ -23,7 +23,7 @@ function generateTable(table, data) {
   for (let element of data) {
     let row = table.insertRow();
     for (key in element) {
-        console.log(element[0]);
+        alert(element[0]);
       let cell = row.insertCell();
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
@@ -35,7 +35,4 @@ let table = document.querySelector("table");
 let data = Object.keys(mountains[0]);
 generateTableHead(table, data);
 generateTable(table, mountains);
-
-var tr = document.querySelector('table').tBody.children[0];
-tr.insertCell(0).outerHTML = "<th>Second</th>"
 });
