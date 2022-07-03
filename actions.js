@@ -36,6 +36,6 @@ let data = Object.keys(mountains[0]);
 generateTableHead(table, data);
 generateTable(table, mountains);
 
-var tr = document.querySelector('table').tHead;
-tr.insertCell(1).outerHTML = "<th>Second</th>"
+var tr = document.querySelector('table').t.children[0];
+tr.insertCell(0).outerHTML = "<th>Second</th>"
 });
