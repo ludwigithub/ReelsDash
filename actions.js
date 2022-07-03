@@ -1,13 +1,5 @@
 
-$(document).ready(function () {
-    var tit = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5"];
 
-    for (var i in tit) {
-        var element = document.createElement("th");
-        element.innerHTML = tit[i];
-        $("#greeting").append(element);
-    }
-});
 var canvas = document.getElementById("Line");
 let mountains = [
   {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 5, "Avg Speed": 5, "Speed(10min)": 5, "Data Integrity": 5, "Order Info": 5, Need: 5 }
