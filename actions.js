@@ -22,9 +22,9 @@ function generateTableHead(table, data) {
 function generateTable(table, data) {
   for (let element of data) {
     let row = table.insertRow();
-    let.className = 'dbCol colName ';
     for (key in element) {
       let cell = row.insertCell();
+      cell.className = 'dbCol colName ';
       let text = document.createTextNode(element[key]);
       cell.appendChild(text);
     }
