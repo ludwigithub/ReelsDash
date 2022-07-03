@@ -10,9 +10,10 @@ $(document).ready(function () {
         $("#greeting").append(element);
     }
 });
-
+var canvas = document.getElementById("Line");
+var context = canvas.getConext("2d");
 let mountains = [
-  {  asa: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi" }
+  {  '${context}': "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi" }
 ];
 
 function generateTableHead(table, data) {
@@ -43,7 +44,6 @@ generateTableHead(table, data);
 generateTable(table, mountains);
 
 window.onload = function(){
-var canvas = document.getElementById("Line");
-var context = canvas.getConext("2d");
+
 alert(context + " it works");
 }
