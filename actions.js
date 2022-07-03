@@ -19,6 +19,7 @@ function generateTableHead(table, data) {
   for (let key of data) {
     let th = document.createElement("th");
     let text = document.createTextNode(key);
+    th.className = "dbTitle";
     th.appendChild(text);
     row.appendChild(th);
   }
