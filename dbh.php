@@ -7,8 +7,6 @@ header('Content-Type: application/json');
 
 
 
-echo json_encode($name);
-
 //$conn = mysqli_connect($server, $username, $password, $dbname);
 $username = "ace";
 $password = "Reels.Ace";
