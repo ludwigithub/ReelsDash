@@ -6,7 +6,8 @@ lines[i] = "John" + i;
 $(document).ready(function () {
 
 let mountains = [
-  {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 }
+  {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 },
+  {  Line: "Monte Falco1", Shift: 1658, "Units Produced1": "Parco Foreste Casentinesi1", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 }
 ];
 mountains.push({
   value: "yes"
