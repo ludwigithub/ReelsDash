@@ -26,7 +26,7 @@ $sql = "SELECT orderindex from dashinfo;";
         $check = mysqli_num_rows($result);
         if($check > 0){
             while($row = mysqli_fetch_assoc($result)){
-                echo json_encode($row[0]);
+                echo json_encode(1);
 
             }
         }
