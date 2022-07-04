@@ -2,7 +2,7 @@
 $name = "David";
 
 header('Content-Type: application/json');
-echo json_encode($name);
+
 
 
 
@@ -16,14 +16,14 @@ $server = "MXL1072KZ8";
 
 echo json_encode('Connected successfully');
 
-$conn = mysqli_connect("MXL1072KZ8", "ace", "Reels.Ace", "dashboard");
-if (!$conn) {
-    die('Could not connect: ' . mysql_error());
+$pdo = new PDO("MXL1072KZ8", "ace", "Reels.Ace", "dashboard");
+if (!$pdo) {
+    echo json_encode("Error");
 }
-
+echo json_encode($name);
 
 $sql = "SELECT orderindex from dashinfo;";
-        $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($pdo, $sql);
         $check = mysqli_num_rows($result);
         if($check > 0){
             while($row = mysqli_fetch_assoc($result)){
