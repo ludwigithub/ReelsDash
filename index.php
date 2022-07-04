@@ -29,9 +29,9 @@
             .then(function(response){
                 return response.json();
             })
-            .then(function(data)){
+            .then(function(data){
                 alert('Hello' + data);
-            }
+            });
 
     </script>
     </head>
