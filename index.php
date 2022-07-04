@@ -30,7 +30,7 @@
                 return response.json();
             })
             .then(function(data){
-                alert('Hello' + data);
+                alert('Hello ' + data);
             });
 
     </script>
