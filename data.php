@@ -1,10 +1,4 @@
 <?php
-function queryMysql($query)
-{
-    $connect = "server=MXL1072KZ8;userid=ace;password=Reels.Ace;database=dashboard";
-    $result = mysqli_query($myLink, $query) or die(mysqli_error($myLink));
-	 return $result;
-}
 
 //string 
  //using (MySqlConnection connection = new MySqlConnection(connect))
