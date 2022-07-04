@@ -24,7 +24,7 @@
                     <script src="actions.js"></script>
             </table>
         </div>
-    <script> 
+    <script src= 'dbh.php'> 
         fetch('dbh.php')
             .then(function(response){
                 return response.json();
@@ -32,7 +32,7 @@
             .then(function(data)){
                 alert('Hello' + data);
             }
-            
+
     </script>
     </head>
 </html>
