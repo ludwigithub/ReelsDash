@@ -7,3 +7,4 @@ $dbname = "dashboard";
 $conn = mysqli_connect($server, $username, $password, $dbname);
 
 echo "it works";
+?>
