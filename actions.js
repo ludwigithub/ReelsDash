@@ -24,7 +24,7 @@ function generateTableHead(table, data) {
 
 function queryData(){
   $.ajax({
-    url: 'test.php',
+    url: 'data.php',
     success: function(data) {
       $('.result').html(data);
     }
