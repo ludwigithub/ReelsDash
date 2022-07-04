@@ -3,7 +3,7 @@
 $(document).ready(function () {
 
 let index = 0;
-  let inputData = [ {"Line": "Monte Falco" + index, "Shift": 1659 + index, "Units Produced": "Parco Foreste Casentinesi" + index, "Uptime": 1 + index, "Avg Speed": 2+index, "Speed(10min)": 3+index, "Data Integrity": +index, "Order Info": +index, "Need": 6+index} ]; //initialize the data
+  let inputData = [ ]; //initialize the data
   
   for(let index = 0; index <= 13; index ++ ){ //dynamically insert the data into the dictionary
     inputData.push({"Line": "Monte Falco" + index, "Shift": 1659 + index, "Units Produced": "Parco Foreste Casentinesi" + index, "Uptime": 1 + index, "Avg Speed": 2+index, "Speed(10min)": 3+index, "Data Integrity": +index, "Order Info": +index, "Need": 6+index})
