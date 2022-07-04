@@ -30,8 +30,8 @@ function generateTable(table, data) {//accepts the table and all the data declar
     let row = table.insertRow(); //insert a row
     for (key in element) { //for all data in the row
       let cell = row.insertCell(); //insert a cell
-      switch(element[key]){
-        case element["Line"]:
+      switch(key){
+        case "Line":
             cell.className = "colName";
             break;
         case element["Shift"]:
