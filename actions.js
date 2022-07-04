@@ -5,12 +5,13 @@ lines[i] = "John" + i;
 
 $(document).ready(function () {
 
-let mountains = [
+let inputData = [
   {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 },
   {  Line: "Monte Falco1", Shift: 1659, "Units Produced": "Parco Foreste Casentinesi1", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 }
 ];
-console.log(mountains["Line"][0]);
-console.log(mountains["Line"][1]);
+console.log(inputData[Line][0]);
+console.log(inputData[0][0]);
+console.log(inputData[1]);
 
 
 function generateTableHead(table, data) {
@@ -25,7 +26,7 @@ function generateTableHead(table, data) {
   }
 }
 
-function generateTable(table, data) {//accepts the table and all the data declared in mountains
+function generateTable(table, data) {//accepts the table and all the data declared in inputData
   for (let element of data) { //for all elements in the data,
     let row = table.insertRow(); //insert a row
     for (key in element) { //for all data in the row
@@ -69,8 +70,8 @@ function generateTable(table, data) {//accepts the table and all the data declar
 }
 
 let table = document.querySelector("table");
-let data = Object.keys(mountains[0]);
+let data = Object.keys(inputData[0]);
 generateTableHead(table, data);
-generateTable(table, mountains);
+generateTable(table, inputData);
 
 });
