@@ -1,3 +1,6 @@
+<?php 
+    include_once('dbh.php');
+?>
 
 <!DOCTYPE html>
 <html>
@@ -21,17 +24,28 @@
             <table>
                 
                     <td><a style='text-decoration:none;' href='DTEvents.php?c=$i' ></a></td>
-                    <script src="actions.js"></script>
+                    
             </table>
         </div>
+        <?php
+        $sql = "SELECT * from dashinfo;";
+        $result = mysqli_query($conn, $sql);
+        $check = mysqli_num_rows($result);
+        if($check > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                echo $row[0];
+
+            }
+        }
+        ?>
     <script> 
-        fetch('dbh.php')
+        /*fetch('dbh.php')
             .then(function(response){
                 return response.json();
             })
             .then(function(data){
                 alert('Hello ' + data);
-            });
+            }); */
 
     </script>
     </head>

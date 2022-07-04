@@ -2,7 +2,6 @@
 
 $(document).ready(function () {
 
-let index = 0;
   let inputData = [ ]; //initialize the data
   
   for(let index = 0; index <= 13; index ++ ){ //dynamically insert the data into the dictionary

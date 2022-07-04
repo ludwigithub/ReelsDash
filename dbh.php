@@ -15,13 +15,12 @@ $server = "MXL1072KZ8";
 
 
 
-$link = mysql_connect("MXL1072KZ8", "ace", "Reels.Ace");
-if (!$link) {
+$conn = mysqli_connect("MXL1072KZ8", "ace", "Reels.Ace", "dashboard");
+if (!$conn) {
     die('Could not connect: ' . mysql_error());
 }
 echo 'Connected successfully';
 
-mysql_close($link);
 
 
 //if you want to suppress the error message, substitute the connection line for:
