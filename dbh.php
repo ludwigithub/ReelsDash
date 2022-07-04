@@ -14,12 +14,13 @@ $server = "MXL1072KZ8";
 // Opens a connection to a MySQL server
 
 
+echo json_encode('Connected successfully');
 
 $conn = mysqli_connect("MXL1072KZ8", "ace", "Reels.Ace", "dashboard");
 if (!$conn) {
     die('Could not connect: ' . mysql_error());
 }
-echo json_encode('Connected successfully');
+
 
 $sql = "SELECT orderindex from dashinfo;";
         $result = mysqli_query($conn, $sql);
