@@ -1,7 +1,4 @@
-<script type="text/javascript">
-var htmlString="<?php echo $htmlString; ?>";
-      alert(htmlString);
-</script>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +14,12 @@ var htmlString="<?php echo $htmlString; ?>";
             <table>
                 
                     <td><a style='text-decoration:none;' href='DTEvents.php?c=$i' ></a></td>
-                    <script src="actions.js"></script>
+                    <script src="actions.js">
+                        
+                    </script><script type="text/javascript">  
+                        var htmlString="<?php echo $htmlString; ?>";
+                              alert(htmlString);
+                        </script>
             </table>
         </div>
         
