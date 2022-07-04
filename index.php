@@ -21,7 +21,7 @@
             <table>
                 
                     <td><a style='text-decoration:none;' href='DTEvents.php?c=$i' ></a></td>
-                    
+                    <script src="actions.js"></script>
             </table>
         </div>
     <script> 
