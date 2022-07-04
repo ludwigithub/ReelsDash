@@ -12,7 +12,7 @@ $username = "ace";
 $password = "Reels.Ace";
 $server = "MXL1072KZ8";
 // Opens a connection to a MySQL server
-$connection = mysql_connect ($server, $username, $password) or die('try again in some minutes, please');
+$connection = mysql_connect ($server, $username, $password);
 //if you want to suppress the error message, substitute the connection line for:
 //$connection = @mysql_connect($server, $username, $password) or die('try again in some minutes, please');
 
