@@ -19,7 +19,7 @@ $conn = mysqli_connect("MXL1072KZ8", "ace", "Reels.Ace", "dashboard");
 if (!$conn) {
     die('Could not connect: ' . mysql_error());
 }
-echo 'Connected successfully';
+echo json_encode('Connected successfully');
 
 $sql = "SELECT orderindex from dashinfo;";
         $result = mysqli_query($conn, $sql);
