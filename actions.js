@@ -9,7 +9,9 @@ let inputData = [
   {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 },
   {  Line: "Monte Falco1", Shift: 1659, "Units Produced": "Parco Foreste Casentinesi1", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 }
 ];
-inputData[1].push("Line", "yes");
+inputData[1].push({
+  key: "Line", 
+  value: "yes"});
 
 
 function generateTableHead(table, data) {
