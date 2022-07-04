@@ -1,10 +1,15 @@
 <?php
 function queryMysql($query)
 {
-    global $myLink;
+    $connect = "server=MXL1072KZ8;userid=ace;password=Reels.Ace;database=dashboard";
     $result = mysqli_query($myLink, $query) or die(mysqli_error($myLink));
 	 return $result;
 }
+
+//string 
+ //using (MySqlConnection connection = new MySqlConnection(connect))
+ // {
+ //string query = $"UPDATE dashinfo Set lineLabels = @lineLabels, CurrentShift = @CurrentShift, Units = @Units, upTime = @upTime,RollAvg = @RollAvg,DataIntegrity0 = @DataIntegrity0, DataIntegrity1 = @DataIntegrity1, OrderInfoTop = @OrderInfoTop, OrderInfobottom = @OrderInfobottom, qtyNeeded = @qtyNeeded, completedFlanges = @completedFlanges,downTime = @downTime, SpeedAvg = @SpeedAvg, TargetSpeed = @TargetSpeed, DisplaySpeed = @DisplaySpeed, hrsIntoShift = @hrsIntoShift where orderIndex = @orderIndex";
 
 $lines = [1,3,4,5,6,7,9,20,30,40,50,60,62];
 foreach ($lines as $l) 

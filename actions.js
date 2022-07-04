@@ -1,3 +1,7 @@
+var lines = new Object();
+for(let i = 0; i < 10; i++){
+lines[i] = "John" + i;
+}
 
 $(document).ready(function () {
     
@@ -6,6 +10,7 @@ var canvas = document.getElementById("Line");
 let mountains = [
   {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 }
 ];
+mountains.Line = "yes";
 
 function generateTableHead(table, data) {
   let thead = table.createTHead();
