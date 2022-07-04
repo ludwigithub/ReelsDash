@@ -22,6 +22,10 @@ function generateTableHead(table, data) {
   }
 }
 
+function queryData(){
+  
+}
+
 function generateTable(table, data) {//accepts the table and all the data declared in inputData
   for (let element of data) { //for all elements in the data,
     let row = table.insertRow(); //insert a row
