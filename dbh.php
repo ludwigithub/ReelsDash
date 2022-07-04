@@ -11,7 +11,7 @@ $password = "Reels.Ace";
 $dbname = "dashboard";
 
 //$conn = mysqli_connect($server, $username, $password, $dbname);
-
+echo json_encode($name);
 $conn = new mysqli($server, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
@@ -19,5 +19,5 @@ if ($conn->connect_error) {
  }
    echo "Connected successfully";
 
-   echo json_encode($name);
+echo json_encode($name);
  ?>
