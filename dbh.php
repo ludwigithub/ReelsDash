@@ -21,7 +21,15 @@ if (!$conn) {
 }
 echo 'Connected successfully';
 
+$sql = "SELECT orderindex from dashinfo;";
+        $result = mysqli_query($conn, $sql);
+        $check = mysqli_num_rows($result);
+        if($check > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                echo json_encode($row[0]);
 
+            }
+        }
 
 //if you want to suppress the error message, substitute the connection line for:
 //$connection = @mysql_connect($server, $username, $password) or die('try again in some minutes, please');
