@@ -1,14 +1,10 @@
 <?php
 
-function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+function debugToConsole($msg) { 
+    echo "<script>console.log(".json_encode($msg).")</script>";
 }
 
-debug_to_console("Test");
+debugToConsole("Test");
 
 $servername = "MXL1072KZ8";
 $username = "ace";
