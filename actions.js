@@ -5,12 +5,24 @@ lines[i] = "John" + i;
 
 $(document).ready(function () {
 
+function add( data1, name, value ) {
+    const exists = data1.find( e => e.name === name );
+    if( exists ) {
+        exists.elems.push( value );
+    }
+    else {
+        data1.push( { name, elems: [value] } );
+    }
+}
+
 let inputData = [
   {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 },
   {  Line: "Monte Falco1", Shift: 1659, "Units Produced": "Parco Foreste Casentinesi1", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 }
 ];
 console.log(inputData[1]);
-
+add(inputData, "Line", 1);
+add(inputData, "Line", 1);
+add(inputData, "Line", 1);
 
 function generateTableHead(table, data) {
   let thead = table.createTHead();
