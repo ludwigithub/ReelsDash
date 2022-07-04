@@ -1,3 +1,6 @@
+<?php
+    include 'dbh.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +25,25 @@
                     <td><a style='text-decoration:none;' href='DTEvents.php?c=$i' ></a></td>
                     <script src="actions.js"></script>
             </table>
+        </div>
+        <div id="comments"> 
+            <?php
+            $sql ="SELECT * FROM dashinfo limit 2";
+            $result = mysqli_query($sql);
+            if(mysqli_num_rows() > 0){
+                while ($row = mysqli_fetch_assoc()){
+                    echo"<p>";
+                    echo $row['orderIndex'] ;
+                    echo "<br>";
+                    echo $row['lineLabels'] ;
+                    echo"</p>";
+                }
+
+            }
+            else{
+                echo "There are no comments!";
+            }
+            ?>
         </div>
         
     </head>

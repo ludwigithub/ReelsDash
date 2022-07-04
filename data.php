@@ -1,15 +1,10 @@
 <?php
-
-$servername = "MXL1072KZ8";
+$server = "MXL1072KZ8";
 $username = "ace";
 $password = "Reels.Ace";
+$dbname = "dashboard";
 
-$connection = new mysqli($servername, $username, $password)
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
-echo "Connected successfully";
+$conn = mysqli_connect($server, $username, $password, $dbname);
 
 $lines = [1,3,4,5,6,7,9,20,30,40,50,60,62];
 foreach ($lines as $l) 
