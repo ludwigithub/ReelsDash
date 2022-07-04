@@ -34,28 +34,28 @@ function generateTable(table, data) {//accepts the table and all the data declar
         case "Line":
             cell.className = "colName";
             break;
-        case element["Shift"]:
+        case "Shift":
             cell.className = "colShift";
             break;
-        case element["Units Produced"]:
+        case "Units Produced":
             cell.className = "colUnits";
             break;
-        case element["Uptime"]:
+        case "Uptime":
             cell.className = "colUptime";
             break;
-        case element["Avg Speed"]:
+        case "Avg Speed":
             cell.className = "colSpd";
             break;
-        case element["Speed(10min)"]:
+        case "Speed(10min)":
             cell.className = "colName"; 
             break;
-        case element["Data Integrity"]:
+        case "Data Integrity":
             cell.className = "colName";
             break;
-        case element["Order Info"]:
+        case "Order Info":
             cell.className = "colOrder";
             break;
-        case element["Need"]:
+        case "Need":
             cell.className = "colRemaining";
             break;
 
