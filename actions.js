@@ -1,26 +1,16 @@
-var lines = new Object();
-for(let i = 0; i < 10; i++){
-lines[i] = "John" + i;
-}
+
 
 $(document).ready(function () {
 
-function add( data1, name, value ) {
-    const exists = data1.find( e => e.name === name );
-    if( exists ) {
-        exists.elems.push( value );
-    }
-    else {
-        data1.push( { name, elems: [value] } );
-    }
-}
 
 let inputData = [
   {  Line: "Monte Falco", Shift: 1658, "Units Produced": "Parco Foreste Casentinesi", Uptime: 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, Need: 6 },
   {   }
 ];
+for(let index = 0; index <= 13; index ++ ){
+  inputData.push({"Line": "Monte Falco" + index, "Shift": 1659 + index, "Units Produced": "Parco Foreste Casentinesi" + index, "Uptime": 1 + index, "Avg Speed": 2+index, "Speed(10min)": 3+index, "Data Integrity": +index, "Order Info": +index, "Need": 6+index})
+}
 
-inputData.push({"Line": "Monte Falco1", "Shift": 1659, "Units Produced": "Parco Foreste Casentinesi1", "Uptime": 1, "Avg Speed": 2, "Speed(10min)": 3, "Data Integrity": 4, "Order Info": 5, "Need": 6})
 
 function generateTableHead(table, data) {
   let thead = table.createTHead();
