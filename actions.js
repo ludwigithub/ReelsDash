@@ -23,7 +23,12 @@ function generateTableHead(table, data) {
 }
 
 function queryData(){
-  
+  $.ajax({
+    url: 'test.php',
+    success: function(data) {
+      $('.result').html(data);
+    }
+  });
 }
 
 function generateTable(table, data) {//accepts the table and all the data declared in inputData
@@ -74,5 +79,6 @@ let data = Object.keys(inputData[0]);
 
 generateTableHead(table, data);
 generateTable(table, inputData);
+queryData();
 
 });
