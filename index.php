@@ -33,9 +33,9 @@
             if(mysqli_num_rows() > 0){
                 while ($row = mysqli_fetch_assoc()){
                     echo"<p>";
-                    echo $row['orderIndex'] ;
+                    echo $row[0] ;
                     echo "<br>";
-                    echo $row['lineLabels'] ;
+                    echo $row[1] ;
                     echo"</p>";
                 }
 
