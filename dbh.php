@@ -5,19 +5,18 @@ header('Content-Type: application/json');
 
 
 
-$server = "MXL1072KZ8";
-$username = "ace";
-$password = "Reels.Ace";
-$dbname = "dashboard";
+
+
+echo json_encode($name);
 
 //$conn = mysqli_connect($server, $username, $password, $dbname);
-\
-$conn = new mysqli($server, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
- }
-   echo "Connected successfully";
+$username = "ace";
+$password = "Reels.Ace";
+$server = "MXL1072KZ8";
+// Opens a connection to a MySQL server
+$connection = mysql_connect ($server, $username, $password) or die('try again in some minutes, please');
+//if you want to suppress the error message, substitute the connection line for:
+//$connection = @mysql_connect($server, $username, $password) or die('try again in some minutes, please');
 
 echo json_encode($name);
  ?>
