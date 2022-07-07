@@ -1,8 +1,4 @@
-<?php 
-    include_once('config.php');
 
-    $query = $connect ->query("SELECT * FROM dashinfo");
-?>
 
 <!DOCTYPE html>
 <html>
@@ -29,11 +25,7 @@
                     
             </table>
         </div>
-        <?php
-        while($row = $query->fetch_assoc()){
-            echo "{$row["Units"]}";
-        }
-        ?>
+        
     <script> 
         /*fetch('dbh.php')
             .then(function(response){
