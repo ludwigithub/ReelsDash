@@ -1,40 +1,64 @@
 
-
-<!DOCTYPE html>
+<?php
+include("config.php"); 
+$query = $conn->query("select * FROM dashinfo");
+?>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="mystyle.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script>
-        $(document).ready(function(){
-             $("#btn").click(function(){
-                $("#test").load("data.php");
-            });
-        });
-        </script>
+	<head>
+	<title>Hartselle Nailwood</title>
+	<style>
+<?php include "colorpage.css"; ?>
+	</style>
+	</head>
+	<body style="background-color:#00111a">
+	<a style="text-decoration:none;" href="dashboard2p0.php"><div class="brand">Sonoco Reels &amp; Plugs</div></a>
+	<div class="brand timeStamp">
+    <?php echo date('l h:i:s A') . "<br />" . date('jS \of F Y') . "<br />"; ?> </div>
+		<table class = "table">
+			<tr>
+				<td class = "dbTitle Line">Line</td>
+				<td class = "dbTitle shift">Shift</td>
+				<td class = "dbTitle Units">Units Produced</td>
+				<td class = "dbTitle upTime">Uptime</td>
+				<td class = "dbTitle Speed">Avg Speed</td>
+				<td class = "dbTitle Speed10min">Speed(10min)</td>
+				<td class = "dbTitle Integrity">Data Integrity</td>
+				<td class = "dbTitle orderInfo">Order Info</td>
+				<td class = "dbTitle Needed">Need</td>
+			</tr>
+		</table>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"> </script>
+		<! –– when the document is ready(has loaded), run a function, use a selector to select the button, when button is clicked, run another function, that loads comments from the database ––>
+			<div id="comments">
+				
+			</div>
+		<table id= "populatetable">
+			<?php
+			?>
+			</table>
+			<script>
+			//when the page has finished loading, call the function
 
-        <a style='text-decoration:none;' href='dashboard3p0.php'>
-            <div class="brand">Sonoco Reels & Plugs</div>
-        </a>
-        <div class="brand timeStamp"></div>
-        <div class='dashboard'>
-            <table>
-                
-                    <td><a style='text-decoration:none;' href='DTEvents.php?c=$i' ></a></td>
-                    
-            </table>
-        </div>
-        
-    <script> 
-        /*fetch('dbh.php')
-            .then(function(response){
-                return response.json();
-            })
-            .then(function(data){
-                alert('Hello ' + data);
-            }); */
+			//when called, update the data from the server
+			$reload = function(){
+			$.ajax({
+					type: "GET",
+					url: "load-table.php",
+					dataType: "html",
+					success: function(data){
+						$("#populatetable").html(data);
+					},
+					complete: function(data){
+						setTimeout($reload,120000)
+					}
+				});
+			}
 
-    </script>
-    </head>
-</html>
+			$(document).ready(function(){
+				$reload();
+				
+			});
+
+		</script>
+		</body>
+	</html>
