@@ -24,6 +24,9 @@ include("config.php");
 		$lineLabels = $row['lineLabels'];
 		$remaining = $row['qtyNeeded'] - $row['completedFlanges'];
 		$unpaidMins = $row['unpaidShiftMins'];
+		$lossBy0 = $row['lossBySPS0'];
+		$lossBy7 = $row['lossBySPS7'];
+		$dataIntegrity0 = round($row['DataIntegrity0'], 1)
 
 		//-----------------DETERMINE THE COLOR----------------------------------------
 		$downTime == 0 ? $nameColor = " good " : $nameColor  = " bad ";
@@ -31,7 +34,8 @@ include("config.php");
 		$remaining <= 25 && $remaining >0? $remainingColor = " okay" : ($remaining <= 0 ? $remainingColor = " good " : $remainingColor = "");
 		$uptime >= $normalL1uptime && $uptime < $targetUptime ? $uptimeColor = " okay" : ($uptime >= $normalL1uptime ? $uptimeColor = " good" : $uptimeColor = " bad");
 		$rollAvg < 0.7 *$normalSpeed[$index] && $rollAvg >= 50 ? $rollColor = " okay" : ($rollAvg >=  0.7 *$normalSpeed[$index] ? $rollColor = " good" : $rollColor = " bad");
-		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad");
+		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad"); //<font size='6'>Market Related:<br></font><font size='8'>" . $lossBy7 . " min</font>"
+		$lossBy0 <= 0.25 && $lossBy7 <=$unpaidMins/60*1.1 ? $dataColor = " OK " : ($lossBy0 <= 0.25 && $lossBy7 > $unpaidMins/60*1.1 ? $dataColor = " colDataIssue " : $dataColor = " colDataIssue ");//><font size='6'>Not Specified:<br></font><font size='8'>". $lossBy0 ." min</font>"
 
 	echo "<tr> " .
 					//-----Line Name-------. else{. " good " . } 
@@ -52,7 +56,7 @@ include("config.php");
 					//-------RollAvg------------
 					"<td><div class='$activeColor $rollColor dbCol colSpd'>$rollAvg</div></td> " .
 					//-------Data Integrity------------
-					"<td><div class='$activeColor dbCol colData'>" . round($row['DataIntegrity0'], 1) . "</div></td> ".
+					"<td><div class='$activeColor dbCol colData $dataColor'>" . $dataIntegrity0 . "</div></td> ".
 
 					//-------ORder Info------------
 					"<td><div class='$activeColor colOrder'> " .$orderInfoTop  . "<br/>" . $orderInfoBottom . "</div></td> " .
