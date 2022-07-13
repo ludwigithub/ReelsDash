@@ -28,7 +28,7 @@ $query = $conn->query("select * FROM dashinfo");
 			</tr>
 		</table>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"> </script>
-		<! –– when the document is ready(has loaded), run a function, use a selector to select the button, when button is clicked, run another function, that loads comments from the database ––>
+		<! â€“â€“ when the document is ready(has loaded), run a function, use a selector to select the button, when button is clicked, run another function, that loads comments from the database â€“â€“>
 			<div id="comments">
 				
 			</div>
@@ -49,7 +49,7 @@ $query = $conn->query("select * FROM dashinfo");
 						$("#populatetable").html(data);
 					},
 					complete: function(data){
-						setTimeout($reload,120000)
+						setTimeout($reload,120*1000)
 					}
 				});
 			}
