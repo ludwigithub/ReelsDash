@@ -26,7 +26,7 @@ include("config.php");
 		$unpaidMins = $row['unpaidShiftMins'];
 		$lossBy0 = $row['lossBySPS0'];
 		$lossBy7 = $row['lossBySPS7'];
-		$dataIntegrity0 = round($row['DataIntegrity0'], 1)
+		$dataIntegrity0 = round($row['DataIntegrity0'], 1);
 
 		//-----------------DETERMINE THE COLOR----------------------------------------
 		$downTime == 0 ? $nameColor = " good " : $nameColor  = " bad ";
@@ -51,7 +51,7 @@ include("config.php");
 					"<td><div class='$activeColor $uptimeColor dbCol colUptime' >" . round($uptime, 1) . "</div></td>" .
 
 					//-------SpeedAvg------------
-					"<td><div class='$activeColor $avgSpeedColor colSpd'>$speedAvg</div></td> ".
+					"<td><div class='$activeColor $avgSpeedColor colSpd'>" . number_format($speedAvg,1) ." </div></td> ".
 
 					//-------RollAvg------------
 					"<td><div class='$activeColor $rollColor dbCol colSpd'>$rollAvg</div></td> " .

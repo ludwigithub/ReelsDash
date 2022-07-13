@@ -96,6 +96,7 @@
     font-family: 'Helvetica';
     border-radius: 5px;
     vertical-align: middle;
+    color: white;
 }
 
 .colName {
@@ -110,14 +111,14 @@
 
 .colShift {
     height: 120px;
-    color: white;
+    color: black;
     width: 70px;
     text-align: center;
     padding-top: 30px;
 }
 
 .colUnits {
-    color: white;
+    color: black;
     width: 280px;
     height: 120px;
     text-align: center;
@@ -148,15 +149,14 @@
 }
 
 .colOrder {
+    color: black;
     height: 150px;
     text-align: center;
     border: lightgray;
     background-color: darkgrey;
-    font-size: 57pt;
+    font-size: 25pt;
     font-family: 'Helvetica';
     border-radius: 1px;
-    color: white;
-    font-size: 30pt;
     width: 240px;
     margin: 0;
     line-height: 175%;
@@ -165,7 +165,7 @@
 
 .colRemaining {
     height: 110px;
-    color: white;
+    color: black;
     width: 170px;
     text-align: center;
     padding-top: 40px;
@@ -174,12 +174,11 @@
 
 
 .colActive {
-    color: white;
     background: #d1e2ff;
 }
 .colData {
     font-size: 40pt;
-    color: white;
+    color: black;
     width: 160px;
     text-align: center;
     height: 110px;
@@ -196,7 +195,7 @@
 }
 
 .okay {
-    color: black;
+    color: white;
     background: #bee804;
 }
 

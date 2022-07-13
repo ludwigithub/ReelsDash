@@ -12,7 +12,7 @@ $query = $conn->query("select * FROM dashinfo");
 	</head>
 	<body style="background-color:#00111a">
 	<a style="text-decoration:none;" href="dashboard2p0.php"><div class="brand">Sonoco Reels &amp; Plugs</div></a>
-	<div class="brand timeStamp">
+	<div id= "time" class="brand timeStamp">
     <?php echo date('l h:i:s A') . "<br />" . date('jS \of F Y') . "<br />"; ?> </div>
 		<table class = "table">
 			<tr>
@@ -47,6 +47,8 @@ $query = $conn->query("select * FROM dashinfo");
 					dataType: "html",
 					success: function(data){
 						$("#populatetable").html(data);
+						$("#time").html();
+
 					},
 					complete: function(data){
 						setTimeout($reload,120*1000)
