@@ -29,13 +29,14 @@ include("config.php");
 		$dataIntegrity0 = round($row['DataIntegrity0'], 1);
 
 		//-----------------DETERMINE THE COLOR----------------------------------------
+		$uptime < 0 ? $uptime = 100 : $uptime = $uptime;
 		$downTime == 0 ? $nameColor = " good " : $nameColor  = " bad ";
 		$LDown != 0 ? $activeColor = " colActive " : $activeColor = " ";
 		$remaining <= 25 && $remaining >0? $remainingColor = " okay" : ($remaining <= 0 ? $remainingColor = " good " : $remainingColor = "");
 		$uptime >= $normalL1uptime && $uptime < $targetUptime ? $uptimeColor = " okay" : ($uptime >= $normalL1uptime ? $uptimeColor = " good" : $uptimeColor = " bad");
 		$rollAvg < 0.7 *$normalSpeed[$index] && $rollAvg >= 50 ? $rollColor = " okay" : ($rollAvg >=  0.7 *$normalSpeed[$index] ? $rollColor = " good" : $rollColor = " bad");
-		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad"); //<font size='6'>Market Related:<br></font><font size='8'>" . $lossBy7 . " min</font>"
-		$lossBy0 <= 0.25 && $lossBy7 <=$unpaidMins/60*1.1 ? $dataColor = " OK " : ($lossBy0 <= 0.25 && $lossBy7 > $unpaidMins/60*1.1 ? $dataColor = " colDataIssue " : $dataColor = " colDataIssue ");//><font size='6'>Not Specified:<br></font><font size='8'>". $lossBy0 ." min</font>"
+		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad"); //"
+		$lossBy0 <= 0.25 && $lossBy7 <=$unpaidMins/60*1.1 ? $dataColor = " OK '>": ($lossBy0 <= 0.25 && $lossBy7 > $unpaidMins/60*1.1 ? $dataColor = " colDataIssue " && $dataIntegrity0 = "'>  <font size='6'>Market Related:<br>" . number_format($lossBy7,2) . " min</font>": $dataColor = " colDataIssue " && $dataIntegrity0 = "'> <font size='6'>Not Specified:<br>". number_format($lossBy0,2) ." min</font>");//>"
 
 	echo "<tr> " .
 					//-----Line Name-------. else{. " good " . } 
@@ -56,7 +57,7 @@ include("config.php");
 					//-------RollAvg------------
 					"<td><div class='$activeColor $rollColor dbCol colSpd'>$rollAvg</div></td> " .
 					//-------Data Integrity------------
-					"<td><div class='$activeColor dbCol colData $dataColor'>" . $dataIntegrity0 . "</div></td> ".
+					"<td><div class='$activeColor dbCol colData $dataColor" . $dataIntegrity0 . "</div></td> ".
 
 					//-------ORder Info------------
 					"<td><div class='$activeColor colOrder'> " .$orderInfoTop  . "<br/>" . $orderInfoBottom . "</div></td> " .

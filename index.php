@@ -12,8 +12,7 @@ $query = $conn->query("select * FROM dashinfo");
 	</head>
 	<body style="background-color:#00111a">
 	<a style="text-decoration:none;" href="dashboard2p0.php"><div class="brand">Sonoco Reels &amp; Plugs</div></a>
-	<div id= "time" class="brand timeStamp">
-    <?php echo date('l h:i:s A') . "<br />" . date('jS \of F Y') . "<br />"; ?> </div>
+	<div id= "time" class="brand timeStamp"> </div>
 		<table class = "table">
 			<tr>
 				<td class = "dbTitle Line">Line</td>
@@ -47,7 +46,10 @@ $query = $conn->query("select * FROM dashinfo");
 					dataType: "html",
 					success: function(data){
 						$("#populatetable").html(data);
-						$("#time").html();
+						var now = new Date();
+						var date = now.getFullYear() + "-"+now.getMonth() + "-" + now.getDate();
+						var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+						$("#time").text("Updated: "+date +" "+time);
 
 					},
 					complete: function(data){
