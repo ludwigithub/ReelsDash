@@ -2,7 +2,7 @@
 include("config.php"); 
 
 
-	$query = $conn->query("select * FROM dashinfo");
+	$query = $conn->query("select * FROM dashinfo WHERE orderIndex IN (6, 3, 4, 9, 1, 30, 7, 20, 5, 40, 50, 60, 62) ORDER BY lineOrder");
 	$index= 0;
 	while($row = $query->fetch_assoc()){
 		//-------------------Define Condition --------------------------------
@@ -10,6 +10,7 @@ include("config.php");
 		$targetUptime = 60/100;
 		$normalSpeed = [120, 130, 225, 90, 80, 160,200,13000,140,5000,65,720,720 ];
 		$targetSpeed = 70;
+		$order = [6, 1, 30, 7, 3, 4, 9, 5, 20, 40, 50, 60, 62 ];
 
 
 		$uptime = $row['upTime'];
