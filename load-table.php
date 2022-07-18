@@ -2,20 +2,23 @@
 include("config.php"); 
 
 
-	$query = $conn->query("select * FROM dashinfo");
+	$query = $conn->query("select * FROM dashinfo WHERE orderIndex IN (6, 3, 4, 9, 1, 30, 7, 20, 5, 40, 50, 60, 62)");
 	$index= 0;
+	Date_default_timezone_set("America/Chicago");
+		
 	while($row = $query->fetch_assoc()){
 		//-------------------Define Condition --------------------------------
 		$normalL1uptime = 50/100;
 		$targetUptime = 60/100;
 		$normalSpeed = [120, 130, 225, 90, 80, 160,200,13000,140,5000,65,720,720 ];
 		$targetSpeed = 70;
-
-
+		//$order = [6, 1, 30, 7, 3, 4, 9, 5, 20, 40, 50, 60, 62];
+		$order = $row['orderIndex'];
 		$uptime = $row['upTime'];
 		$speedAvg = $row['SpeedAvg'];
 		$rollAvg = $row['RollAvg'];
-		$orderInfoTop = $row['OrderInfoTop'];
+		$orderInfoTop_DIAM = $row['OrderInfoTop_DIAM'];
+		$orderInfoTop_THICK = $row['OrderInfoTop_THICK'];
 		$orderInfoBottom = $row['OrderInfoBottom'];
 		$downTime = $row['downTime'];
 		$LDown = $row['LDown'];
@@ -26,17 +29,66 @@ include("config.php");
 		$unpaidMins = $row['unpaidShiftMins'];
 		$lossBy0 = $row['lossBySPS0'];
 		$lossBy7 = $row['lossBySPS7'];
+		$lossBy0 < $lossBy7 ? $lossBy0 = $lossBy7 : $lossBy7 = $lossBy0;
 		$dataIntegrity0 = round($row['DataIntegrity0'], 1);
+		$dataIntegrity1 = round($row['DataIntegrity1'], 1);
 
 		//-----------------DETERMINE THE COLOR----------------------------------------
-		$downTime == 0 ? $nameColor = " good " : $nameColor  = " bad ";
-		$LDown != 0 ? $activeColor = " colActive " : $activeColor = " ";
+		//floatval$dataIntegrity0 < 25 ? $dataIntegrity0 = " OK'> OK" : $dataIntegrity0 = $dataIntegrity0;
+		$uptime < 0 ? $uptime = -($uptime) : $uptime = $uptime;
+		$LDown >= 0 ? $activeColor = " colActive " : $activeColor = " ";
+		$downTime*60 >= 3 ? $nameColor  = " bad " : ($downTime*60 >= 2 ?  $nameColor  = " okay " : $nameColor  = " good ");
 		$remaining <= 25 && $remaining >0? $remainingColor = " okay" : ($remaining <= 0 ? $remainingColor = " good " : $remainingColor = "");
-		$uptime >= $normalL1uptime && $uptime < $targetUptime ? $uptimeColor = " okay" : ($uptime >= $normalL1uptime ? $uptimeColor = " good" : $uptimeColor = " bad");
+		$uptime >=71 ? $uptimeColor = " good" : ($uptime >= 50 ? $uptimeColor = " okay" : $uptimeColor = " bad");
 		$rollAvg < 0.7 *$normalSpeed[$index] && $rollAvg >= 50 ? $rollColor = " okay" : ($rollAvg >=  0.7 *$normalSpeed[$index] ? $rollColor = " good" : $rollColor = " bad");
-		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad"); //<font size='6'>Market Related:<br></font><font size='8'>" . $lossBy7 . " min</font>"
-		$lossBy0 <= 0.25 && $lossBy7 <=$unpaidMins/60*1.1 ? $dataColor = " OK " : ($lossBy0 <= 0.25 && $lossBy7 > $unpaidMins/60*1.1 ? $dataColor = " colDataIssue " : $dataColor = " colDataIssue ");//><font size='6'>Not Specified:<br></font><font size='8'>". $lossBy0 ." min</font>"
+		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad"); //"
+		$lossBy0 * 60 < 25 ? $dataIntegrity0 = " OK'> OK" : ($lossBy0 <= 0.25 && $lossBy7 > $unpaidMins/60*1.1 ? $dataColor = " colDataIssue " && $dataIntegrity0 = "'>  <font size='6'>Market Related:<br>" . number_format($lossBy7 *60,2) . " min</font>": $dataIntegrity0 = " colDataIssue ' > <font size='6'>Not Specified:<br>". number_format($dataIntegrity0,2) ." min</font>");//>"
 
+		//---------------------Add units--------------------------------
+		switch($order){
+			case 6:
+				$units = $units . " Flgs";
+				
+				break;
+			case 1:
+				$units = $units . " Flgs";
+				break;
+			case 30:
+				$units = $units . " Flgs";
+				break;
+			case 7:
+				$units = $units . " Flgs";
+				break;
+			case 3:
+				$units = $units . " Flgs";
+				break;
+			case 4:
+				$units = $units . " Flgs";
+				break;
+			case 9:
+				$units = $units . " Flgs";
+				break;
+			case 5:
+				$units = $units . " Ln Ft";
+				break;
+			case 20:
+				$units = $units . " Flgs";
+				break;
+			case 40:
+				$units = $units . " Ln Ft";
+				break;
+			case 50:
+				$units = $units . " Bdls";
+				break;
+			case 60:
+				$units = round((pow($orderInfoTop_DIAM, 2))/144, 2);
+				//$units = round($units, 2) . " Sq. Ft";
+				break;
+			case 62:
+				$units = round((pow(($orderInfoTop_DIAM), 2))/144, 2);
+				//$units = round($units, 2) . " Sq. Ft";
+				break;
+		}
 	echo "<tr> " .
 					//-----Line Name-------. else{. " good " . } 
 					"<td><div class = '$activeColor $nameColor dbCol colName'>$lineLabels </div><div class = '$nameColor postDowntime'>" . $downTime*60 ."mins</div></td> " .
@@ -45,7 +97,7 @@ include("config.php");
 					"<td><div class=' $activeColor dbCol colShift'> $currentShift </div></td> " .
 
 					//-------Units------------
-					"<td><div class='$activeColor dbCol colUnits'> " . $units  . "</div></td>" .
+					"<td><div  class='$activeColor dbCol colUnits' id ='units" . $index . "'>" . $units  . " </div></td>" .
 
 					//-------upTime------------
 					"<td><div class='$activeColor $uptimeColor dbCol colUptime' >" . round($uptime, 1) . "</div></td>" .
@@ -56,17 +108,20 @@ include("config.php");
 					//-------RollAvg------------
 					"<td><div class='$activeColor $rollColor dbCol colSpd'>$rollAvg</div></td> " .
 					//-------Data Integrity------------
-					"<td><div class='$activeColor dbCol colData $dataColor'>" . $dataIntegrity0 . "</div></td> ".
+					"<td><div class='$activeColor dbCol colData " . $dataIntegrity0 . "</div></td> ".
 
 					//-------ORder Info------------
-					"<td><div class='$activeColor colOrder'> " .$orderInfoTop  . "<br/>" . $orderInfoBottom . "</div></td> " .
+					"<td><div class='$activeColor colOrder' id = 'orderInfo" . $index . "'> " . $orderInfoTop_DIAM ." x " .$orderInfoTop_THICK . "<br/>" . $orderInfoBottom . "</div></td> " .
 
 					//-------Needed------------
 					"<td> <div class='$activeColor $remainingColor dbCol colRemaining'>" . $remaining ."</div></td>
+					
 			</tr>";
+			$index +=1;
 
 	}
-		$index +=1;
+
+		
 			?>
 }
-?>
+

@@ -12,15 +12,14 @@ $query = $conn->query("select * FROM dashinfo");
 	</head>
 	<body style="background-color:#00111a">
 	<a style="text-decoration:none;" href="dashboard2p0.php"><div class="brand">Sonoco Reels &amp; Plugs</div></a>
-	<div id= "time" class="brand timeStamp">
-    <?php echo date('l h:i:s A') . "<br />" . date('jS \of F Y') . "<br />"; ?> </div>
+	<div id= "time" class="brand timeStamp"> </div>
 		<table class = "table">
 			<tr>
 				<td class = "dbTitle Line">Line</td>
 				<td class = "dbTitle shift">Shift</td>
 				<td class = "dbTitle Units">Units Produced</td>
 				<td class = "dbTitle upTime">Uptime</td>
-				<td class = "dbTitle Speed">Avg Speed</td>
+				<td class = "dbTitle Speed">Current Speed</td>
 				<td class = "dbTitle Speed10min">Speed(10min)</td>
 				<td class = "dbTitle Integrity">Data Integrity</td>
 				<td class = "dbTitle orderInfo">Order Info</td>
@@ -47,7 +46,10 @@ $query = $conn->query("select * FROM dashinfo");
 					dataType: "html",
 					success: function(data){
 						$("#populatetable").html(data);
-						$("#time").html();
+						var now = new Date();
+						var date = now.getFullYear() + "-"+now.getMonth() + "-" + now.getDate();
+						var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+						$("#time").text("Updated: "+date +" "+time);
 
 					},
 					complete: function(data){
