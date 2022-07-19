@@ -81,11 +81,11 @@ include("config.php");
 				$units = $units . " Bdls";
 				break;
 			case 60:
-				$units = round((pow($orderInfoTop_DIAM, 2))/144 , 2);
+				$units = round((pow($orderInfoTop_DIAM, 2))/144 *$flangesCompleted, 2);
 				//$units = round($units, 2) . " Sq. Ft";
 				break;
 			case 62:
-				$units = round((pow(($orderInfoTop_DIAM), 2))/144, 2);
+				$units = round((pow(($orderInfoTop_DIAM), 2))/144 * $flangesCompleted, 2);
 				//$units = round($units, 2) . " Sq. Ft";
 				break;
 		}
