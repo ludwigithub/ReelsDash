@@ -26,6 +26,8 @@ include("config.php");
 		$currentShift = $row['CurrentShift'];
 		$lineLabels = $row['lineLabels'];
 		$remaining = $row['qtyNeeded'] - $row['completedFlanges'];
+		$flangesNeeded = $row['qtyNeeded'];
+		$flangesCompleted = $row['completedFlanges'];
 		$unpaidMins = $row['unpaidShiftMins'];
 		$lossBy0 = $row['lossBySPS0'];
 		$lossBy7 = $row['lossBySPS7'];
@@ -66,20 +68,20 @@ include("config.php");
 			case 9:
 				$units = $units . " Flgs";
 				break;
-			case 5:
-				$units = $units . " Ln Ft";
+			case 5: //Line 5
+				$units = $units . " Flgs";
 				break;
 			case 20:
 				$units = $units . " Flgs";
 				break;
-			case 40:
+			case 40://Resaw
 				$units = $units . " Ln Ft";
 				break;
 			case 50:
 				$units = $units . " Bdls";
 				break;
 			case 60:
-				$units = round((pow($orderInfoTop_DIAM, 2))/144, 2);
+				$units = round((pow($orderInfoTop_DIAM, 2))/144 , 2);
 				//$units = round($units, 2) . " Sq. Ft";
 				break;
 			case 62:
@@ -109,7 +111,7 @@ include("config.php");
 					"<td><div class='$activeColor dbCol colData " . $dataIntegrity0 . "</div></td> ".
 
 					//-------ORder Info------------
-					"<td><div class='$activeColor colOrder' id = 'orderInfo" . $index . "'> " . $orderInfoTop_DIAM ." x " .$orderInfoTop_THICK . "<br/>" . $orderInfoBottom . "</div></td> " .
+					"<td><div class='$activeColor colOrder' id = 'orderInfo" . $index . "'> " . $orderInfoTop_DIAM ." x " .$orderInfoTop_THICK . "<br/>" . $flangesCompleted .  " of " . $flangesNeeded . "</div></td> " .
 
 					//-------Needed------------
 					"<td> <div class='$activeColor $remainingColor dbCol colRemaining'>" . $remaining ."</div></td>
