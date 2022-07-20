@@ -12,6 +12,7 @@ $query = $conn->query("select * FROM dashinfo");
 	</head>
 	<body style="background-color:#00111a">
 	<a style="text-decoration:none;" href="dashboard2p0.php"><div class="brand">Sonoco Reels &amp; Plugs</div></a>
+	<div id= "tester" class = "holder"> </div>
 	<div id= "time" class="brand timeStamp"> </div>
 		<table class = "table">
 			<tr>
@@ -32,8 +33,7 @@ $query = $conn->query("select * FROM dashinfo");
 				
 			</div>
 		<table id= "populatetable">
-			<?php
-			?>
+
 			</table>
 			<script>
 			//when the page has finished loading, call the function
@@ -50,10 +50,11 @@ $query = $conn->query("select * FROM dashinfo");
 						var date = now.getFullYear() + "-"+now.getMonth() + "-" + now.getDate();
 						var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 						$("#time").text("Updated: "+date +" "+time);
+						
 
 					},
 					complete: function(data){
-						setTimeout($reload,120*1000)
+						setTimeout($reload,120*1000);
 					}
 				});
 			}

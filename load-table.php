@@ -26,15 +26,15 @@ include("config.php");
 		$currentShift = $row['CurrentShift'];
 		$lineLabels = $row['lineLabels'];
 		$remaining = $row['qtyNeeded'] - $row['completedFlanges'];
+		$flangesNeeded = $row['qtyNeeded'];
+		$flangesCompleted = $row['completedFlanges'];
 		$unpaidMins = $row['unpaidShiftMins'];
 		$lossBy0 = $row['lossBySPS0'];
 		$lossBy7 = $row['lossBySPS7'];
 		$lossBy0 < $lossBy7 ? $lossBy0 = $lossBy7 : $lossBy7 = $lossBy0;
 		$dataIntegrity0 = round($row['DataIntegrity0'], 1);
-		$dataIntegrity1 = round($row['DataIntegrity1'], 1);
 
 		//-----------------DETERMINE THE COLOR----------------------------------------
-		//floatval$dataIntegrity0 < 25 ? $dataIntegrity0 = " OK'> OK" : $dataIntegrity0 = $dataIntegrity0;
 		$uptime < 0 ? $uptime = -($uptime) : $uptime = $uptime;
 		$LDown >= 0 ? $activeColor = " colActive " : $activeColor = " ";
 		$downTime*60 >= 3 ? $nameColor  = " bad " : ($downTime*60 >= 2 ?  $nameColor  = " okay " : $nameColor  = " good ");
@@ -42,7 +42,7 @@ include("config.php");
 		$uptime >=71 ? $uptimeColor = " good" : ($uptime >= 50 ? $uptimeColor = " okay" : $uptimeColor = " bad");
 		$rollAvg < 0.7 *$normalSpeed[$index] && $rollAvg >= 50 ? $rollColor = " okay" : ($rollAvg >=  0.7 *$normalSpeed[$index] ? $rollColor = " good" : $rollColor = " bad");
 		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad"); //"
-		$lossBy0 * 60 < 25 ? $dataIntegrity0 = " OK'> OK" : ($lossBy0 <= 0.25 && $lossBy7 > $unpaidMins/60*1.1 ? $dataColor = " colDataIssue " && $dataIntegrity0 = "'>  <font size='6'>Market Related:<br>" . number_format($lossBy7 *60,2) . " min</font>": $dataIntegrity0 = " colDataIssue ' > <font size='6'>Not Specified:<br>". number_format($dataIntegrity0,2) ." min</font>");//>"
+		$lossBy0 * 60 < 25 ? $dataIntegrity0 = " OK'> OK" : ($lossBy0 <= 0.25 && $lossBy7 > $unpaidMins/60*1.1 ? $dataColor = " colDataIssue " && $dataIntegrity0 = "'>  <font size='6'>Market Related:<br>" . number_format($lossBy7 *60,2) . " min</font>": $dataIntegrity0 = " colDataIssue ' > <font size='6'>Not Specified:<br>". number_format($lossBy0 * 60,2) ." min</font>");//>"
 
 		//---------------------Add units--------------------------------
 		switch($order){
@@ -68,24 +68,24 @@ include("config.php");
 			case 9:
 				$units = $units . " Flgs";
 				break;
-			case 5:
-				$units = $units . " Ln Ft";
+			case 5: //Line 5
+				$units = $units . " Flgs";
 				break;
 			case 20:
 				$units = $units . " Flgs";
 				break;
-			case 40:
+			case 40://Resaw
 				$units = $units . " Ln Ft";
 				break;
 			case 50:
 				$units = $units . " Bdls";
 				break;
 			case 60:
-				$units = round((pow($orderInfoTop_DIAM, 2))/144, 2);
+				$units = round((pow($orderInfoTop_DIAM, 2))/144 *$flangesCompleted, 2) . " Ln Ft";;
 				//$units = round($units, 2) . " Sq. Ft";
 				break;
 			case 62:
-				$units = round((pow(($orderInfoTop_DIAM), 2))/144, 2);
+				$units = round((pow(($orderInfoTop_DIAM), 2))/144 * $flangesCompleted, 2) . " Ln Ft";;
 				//$units = round($units, 2) . " Sq. Ft";
 				break;
 		}
@@ -111,7 +111,7 @@ include("config.php");
 					"<td><div class='$activeColor dbCol colData " . $dataIntegrity0 . "</div></td> ".
 
 					//-------ORder Info------------
-					"<td><div class='$activeColor colOrder' id = 'orderInfo" . $index . "'> " . $orderInfoTop_DIAM ." x " .$orderInfoTop_THICK . "<br/>" . $orderInfoBottom . "</div></td> " .
+					"<td><div class='$activeColor colOrder' id = 'orderInfo" . $index . "'> " . $orderInfoTop_DIAM ." x " .$orderInfoTop_THICK . "<br/>" . $flangesCompleted .  " of " . $flangesNeeded . "</div></td> " .
 
 					//-------Needed------------
 					"<td> <div class='$activeColor $remainingColor dbCol colRemaining'>" . $remaining ."</div></td>

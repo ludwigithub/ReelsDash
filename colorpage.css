@@ -16,6 +16,22 @@
     margin-top: 120px;
 }
 
+.tester {
+    width: 50px;
+    background: #6ee804;
+}
+
+.holder {
+    left: 900px;
+    width: 700px;
+    height: 30px;
+    font-size: 39pt;
+    text-align: right;
+    color: #4db8ff;
+    padding-top: 10px;
+    padding-left: 620px;
+}
+
 .timeStamp {
     left: 800px;
     width: 600px;
@@ -113,7 +129,7 @@
 }
 
 .colUnits {
-    font-size: 48pt;
+    font-size: 48px;
     color: black;
     width: 280px;
     height: 120px;
