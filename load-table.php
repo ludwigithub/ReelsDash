@@ -23,6 +23,7 @@ include("config.php");
 		$downTime = $row['downTime'];
 		$LDown = $row['LDown'];
 		$units = $row['Units'];
+		$totalDownTime = $row['totalDownTime'];
 		$currentShift = $row['CurrentShift'];
 		$lineLabels = $row['lineLabels'];
 		$remaining = $row['qtyNeeded'] - $row['completedFlanges'];
@@ -100,7 +101,7 @@ include("config.php");
 					"<td><div  class='$activeColor dbCol colUnits' id ='units" . $index . "'>" . $units  . " </div></td>" .
 
 					//-------upTime------------
-					"<td><div class='$activeColor $uptimeColor dbCol colUptime' >" . round($uptime, 1) . "</div></td>" .
+					"<td><div class='$activeColor $uptimeColor dbCol colUptime' >" . round(($uptime - $totalDownTime/10), 1) . "</div></td>" .
 
 					//-------SpeedAvg------------
 					"<td><div class='$activeColor $avgSpeedColor colSpd'>" . number_format($speedAvg,1) ." </div></td> ".
