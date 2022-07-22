@@ -2,7 +2,7 @@
 include("config.php"); 
 
 
-	$query = $conn->query("select * FROM dashinfo WHERE orderIndex IN (6, 3, 4, 9, 1, 30, 7, 20, 5, 40, 50, 60, 62)");
+	$query = $conn->query("select * FROM dashinfo WHERE orderIndex IN (6, 3, 4, 9, 1, 30, 7, 20, 5, 40, 50, 60, 62, 51)");
 	$index= 0;
 	Date_default_timezone_set("America/Chicago");
 		
@@ -38,7 +38,7 @@ include("config.php");
 
 		//-----------------DETERMINE THE COLOR----------------------------------------
 		$uptime = ($hrsIntoShift * 60) -(($downTime * 60)+$totalDownTime);
-		//$uptime < 0 ? $uptime = -($uptime) : $uptime = $uptime;
+		$uptime < 0 ? $uptime = 0 : $uptime = $uptime;
 		$LDown >= 0 ? $activeColor = " colActive " : $activeColor = " ";
 		$downTime*60 >= 3 ? $nameColor  = " bad " : ($downTime*60 >= 2 ?  $nameColor  = " okay " : $nameColor  = " good ");
 		$remaining <= 25 && $remaining > 1? $remainingColor = " okay" : ($remaining == 0 ? $remainingColor = " good " : $remainingColor = "");
@@ -93,6 +93,11 @@ include("config.php");
 				$units = round((pow(($orderInfoTop_DIAM), 2))/144 * $flangesCompleted, 2) . " Ln Ft";;
 				//$units = round($units, 2) . " Sq. Ft";
 				break;
+			case 51:
+				$units = number_format($units,2) . " Ln Ft";;
+				$uptime = 0;
+				//$units = round($units, 2) . " Sq. Ft";
+				break;
 		}
 	echo "<tr> " .
 					//-----Line Name-------. else{. " good " . } 
@@ -105,7 +110,7 @@ include("config.php");
 					"<td><div  class='$activeColor dbCol colUnits' id ='units" . $index . "'>" . $units  . " </div></td>" .
 
 					//-------upTime------------
-					"<td><div class='$activeColor $uptimeColor dbCol colUptime' >" . round(($uptime - $totalDownTime/10), 1) . "</div></td>" .
+					"<td><div class='$activeColor $uptimeColor dbCol colUptime' >" . round(($uptime), 1) . "</div></td>" .
 
 					//-------SpeedAvg------------
 					"<td><div class='$activeColor $avgSpeedColor colSpd'>" . number_format($speedAvg,1) ." </div></td> ".
