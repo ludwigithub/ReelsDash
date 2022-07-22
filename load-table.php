@@ -14,13 +14,14 @@ include("config.php");
 		$targetSpeed = 70;
 		//$order = [6, 1, 30, 7, 3, 4, 9, 5, 20, 40, 50, 60, 62];
 		$order = $row['orderIndex'];
-		$uptime = $row['upTime'];
+		$hrsIntoShift = $row['hrsIntoShift'];
 		$speedAvg = $row['SpeedAvg'];
 		$rollAvg = $row['RollAvg'];
 		$orderInfoTop_DIAM = $row['OrderInfoTop_DIAM'];
 		$orderInfoTop_THICK = $row['OrderInfoTop_THICK'];
 		$orderInfoBottom = $row['OrderInfoBottom'];
 		$downTime = $row['downTime'];
+		$totalDownTime = $row['totalDownTime'];
 		$LDown = $row['LDown'];
 		$units = $row['Units'];
 		$totalDownTime = $row['totalDownTime'];
@@ -36,13 +37,16 @@ include("config.php");
 		$dataIntegrity0 = round($row['DataIntegrity0'], 1);
 
 		//-----------------DETERMINE THE COLOR----------------------------------------
-		$uptime < 0 ? $uptime = -($uptime) : $uptime = $uptime;
+		$uptime = ($hrsIntoShift * 60) -(($downTime * 60)+$totalDownTime);
+		//$uptime < 0 ? $uptime = -($uptime) : $uptime = $uptime;
 		$LDown >= 0 ? $activeColor = " colActive " : $activeColor = " ";
 		$downTime*60 >= 3 ? $nameColor  = " bad " : ($downTime*60 >= 2 ?  $nameColor  = " okay " : $nameColor  = " good ");
-		$remaining <= 25 && $remaining >0? $remainingColor = " okay" : ($remaining <= 0 ? $remainingColor = " good " : $remainingColor = "");
-		$uptime >=71 ? $uptimeColor = " good" : ($uptime >= 50 ? $uptimeColor = " okay" : $uptimeColor = " bad");
+		$remaining <= 25 && $remaining > 1? $remainingColor = " okay" : ($remaining == 0 ? $remainingColor = " good " : $remainingColor = "");
+		$percentageUptime = ($uptime/($hrsIntoShift * 60)) * 100;
+		$percentageUptime >=71 ? $uptimeColor = " good" : ($percentageUptime >= 50 ? $uptimeColor = " okay" : $uptimeColor = " bad");
+
 		$rollAvg < 0.7 *$normalSpeed[$index] && $rollAvg >= 50 ? $rollColor = " okay" : ($rollAvg >=  0.7 *$normalSpeed[$index] ? $rollColor = " good" : $rollColor = " bad");
-		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad"); //"
+		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad");
 		$lossBy0 * 60 < 25 ? $dataIntegrity0 = " OK'> OK" : ($lossBy0 <= 0.25 && $lossBy7 > $unpaidMins/60*1.1 ? $dataColor = " colDataIssue " && $dataIntegrity0 = "'>  <font size='6'>Market Related:<br>" . number_format($lossBy7 *60,2) . " min</font>": $dataIntegrity0 = " colDataIssue ' > <font size='6'>Not Specified:<br>". number_format($lossBy0 * 60,2) ." min</font>");//>"
 
 		//---------------------Add units--------------------------------
