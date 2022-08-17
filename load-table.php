@@ -37,14 +37,12 @@ include("config.php");
 		$dataIntegrity0 = round($row['DataIntegrity0'], 1);
 
 		//-----------------DETERMINE THE COLOR----------------------------------------
-		$uptime = ($hrsIntoShift * 60) -(($downTime * 60)+$totalDownTime);
+		$uptime = (number_format(($hrsIntoShift * 60) -(($downTime * 60)+$totalDownTime), 2)/($hrsIntoShift * 60)) *100;
 		$uptime < 0 ? $uptime = 0 : $uptime = $uptime;
 		$LDown >= 0 ? $activeColor = " colActive " : $activeColor = " ";
 		$downTime*60 >= 3 ? $nameColor  = " bad " : ($downTime*60 >= 2 ?  $nameColor  = " okay " : $nameColor  = " good ");
 		$remaining <= 25 && $remaining > 1? $remainingColor = " okay" : ($remaining == 0 ? $remainingColor = " good " : $remainingColor = "");
-		$percentageUptime = ($uptime/($hrsIntoShift * 60)) * 100;
-		$percentageUptime >=71 ? $uptimeColor = " good" : ($percentageUptime >= 50 ? $uptimeColor = " okay" : $uptimeColor = " bad");
-
+		$uptime >=71 ? $uptimeColor = " good" : ($uptime >= 50 ? $uptimeColor = " okay" : $uptimeColor = " bad");
 		$rollAvg < 0.7 *$normalSpeed[$index] && $rollAvg >= 50 ? $rollColor = " okay" : ($rollAvg >=  0.7 *$normalSpeed[$index] ? $rollColor = " good" : $rollColor = " bad");
 		$speedAvg < $normalSpeed[$index] * 0.7 && $speedAvg >= $normalSpeed[$index]*50 ? $avgSpeedColor = " okay" : ($speedAvg >= $normalSpeed[$index] * 0.7 ? $avgSpeedColor = " good" : $avgSpeedColor = " bad");
 		$lossBy0 * 60 < 25 ? $dataIntegrity0 = " OK'> OK" : ($lossBy0 <= 0.25 && $lossBy7 > $unpaidMins/60*1.1 ? $dataColor = " colDataIssue " && $dataIntegrity0 = "'>  <font size='6'>Market Related:<br>" . number_format($lossBy7 *60,2) . " min</font>": $dataIntegrity0 = " colDataIssue ' > <font size='6'>Not Specified:<br>". number_format($lossBy0 * 60,2) ." min</font>");//>"
@@ -108,8 +106,8 @@ include("config.php");
 					//-------Units------------
 					"<td><div  class='$activeColor dbCol colUnits' id ='units" . $index . "'>" . $units  . " </div></td>" .
 
-					//-------upTime------------
-					"<td><div class='$activeColor $uptimeColor dbCol colUptime' >" . round(($uptime), 1) . "</div></td>" .
+					//-------upTime------------$uptime = (/) *100
+					"<td><div class='$activeColor $uptimeColor dbCol colUptime' title= '(". number_format(($hrsIntoShift * 60) -(($downTime * 60)+$totalDownTime),2) .  "mins of Uptime / " . ($hrsIntoShift * 60). "mins of Time into Shift ) * 100' >" . round(($uptime), 1) . " %</div></td>" .
 
 					//-------SpeedAvg------------
 					"<td><div class='$activeColor $avgSpeedColor colSpd'>" . number_format($speedAvg,1) ." </div></td> ".
