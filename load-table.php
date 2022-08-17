@@ -2,7 +2,7 @@
 include("config.php"); 
 
 
-	$query = $conn->query("select * FROM dashinfo WHERE orderIndex IN (6, 3, 4, 9, 1, 30, 7, 20, 5, 40, 50, 60, 62, 51)");
+	$query = $conn->query("select * FROM dashinfo WHERE orderIndex IN (6, 3, 4, 9, 1, 30, 7, 20, 5, 40, 50, 60, 62, 51, 70)");
 	$index= 0;
 	Date_default_timezone_set("America/Chicago");
 		
@@ -95,7 +95,6 @@ include("config.php");
 				break;
 			case 51:
 				$units = number_format($units,2) . " Ln Ft";;
-				$uptime = 0;
 				//$units = round($units, 2) . " Sq. Ft";
 				break;
 		}
