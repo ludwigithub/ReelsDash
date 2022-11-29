@@ -8,11 +8,11 @@
 
 //$conn = new mysqli($server, $username, $password, $db);
 
-//$url = parse_url(getenv("mysql://be3e1e29137712:f81aeb52@us-cdbr-east-06.cleardb.net/heroku_671f81d6999c808?reconnect=true"));
+
 $server = "us-cdbr-east-06.cleardb.net";
-$username = "b7beb132ba1b0d";
-$password = "90498c26";
-$db = "heroku_274164e1ce79a26";
+$username = "b5d09f87f57f1b";
+$password = "878a9758";
+$db = "heroku_c3235b8a3c5307d";
 
 $conn = mysqli_connect($server, $username, $password, $db) or die("database connection error");
 ?>
