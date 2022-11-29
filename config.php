@@ -10,9 +10,9 @@
 
 //$url = parse_url(getenv("mysql://be3e1e29137712:f81aeb52@us-cdbr-east-06.cleardb.net/heroku_671f81d6999c808?reconnect=true"));
 $server = "us-cdbr-east-06.cleardb.net";
-$username = "be3e1e29137712";
-$password = "f81aeb52";
-$db = "heroku_671f81d6999c808";
+$username = "b7beb132ba1b0d";
+$password = "90498c26";
+$db = "heroku_274164e1ce79a26";
 
 $conn = mysqli_connect($server, $username, $password, $db) or die("database connection error");
 ?>
