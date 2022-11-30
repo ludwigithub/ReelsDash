@@ -19,7 +19,6 @@ include("config.php");
 		$rollAvg = $row['RollAvg'];
 		$orderInfoTop_DIAM = $row['OrderInfoTop_DIAM'];
 		$orderInfoTop_THICK = $row['OrderInfoTop_THICK'];
-		$orderInfoBottom = $row['OrderInfoBottom'];
 		$downTime = $row['downTime'];
 		$totalDownTime = $row['totalDownTime'];
 		$LDown = $row['LDown'];
