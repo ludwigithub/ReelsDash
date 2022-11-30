@@ -97,7 +97,7 @@ include("config.php");
 		}
 	echo "<tr> " .
 					//-----Line Name-------. else{. " good " . } 
-					"<td><div class = '$activeColor $nameColor dbCol colName'>$lineLabels </div><div class = '$nameColor postDowntime'>" . $downTime*60 ."mins</div></td> " .
+					"<td><div class = '$activeColor $nameColor dbCol colName'>$lineLabels </div><div class = '$nameColor postDowntime'>" . round($downTime*60, 3) ."mins</div></td> " .
 
 					//-----Current Shift-------
 					"<td><div class=' $activeColor dbCol colShift'> $currentShift </div></td> " .
