@@ -28,7 +28,6 @@ $query = $conn->query("select * FROM dashinfo");
 			</tr>
 		</table>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"> </script>
-		<! –– when the document is ready(has loaded), run a function, use a selector to select the button, when button is clicked, run another function, that loads comments from the database ––>
 			<div id="comments">
 				
 			</div>
@@ -46,14 +45,16 @@ $query = $conn->query("select * FROM dashinfo");
 					dataType: "html",
 					success: function(data){
 						$("#populatetable").html(data);
-						var now = new Date();
-						var date = now.getFullYear() + "-"+now.getMonth() + "-" + now.getDate();
+						const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+				var now = new Date();
+				var date = now.getDate() +"-" +month[now.getMonth()] + " " +now.getFullYear();
 						var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 						$("#time").text("Updated: "+date +" "+time);
 						
 
 					},
 					complete: function(data){
+						console.log("loaded");
 						setTimeout($reload,120*1000);
 					}
 				});
